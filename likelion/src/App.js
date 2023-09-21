@@ -55,6 +55,15 @@ function App() {
         article h1 {
           padding: 0 0.5rem;
         }
+        section.changed {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        section.changed > div {
+          color: purple;
+          font-weight: 800;
+        }
         section.list {
           display: flex;
           flex-direction: column;
