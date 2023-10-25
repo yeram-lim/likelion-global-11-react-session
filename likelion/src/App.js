@@ -3,6 +3,7 @@ import { useState } from "react";
 function App() {
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
+  const [countC, setCountC] = useState(0);
 
   return (
     <>
@@ -63,8 +64,20 @@ function App() {
               <div>
                 <div>0</div>
                 <div className={"button-list"}>
-                  <button>-</button>
-                  <button>+</button>
+                  <button
+                    onClick={() => {
+                      setCountC(countC - 1);
+                    }}
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCountC(countC + 1);
+                    }}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </li>
