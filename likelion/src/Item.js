@@ -1,18 +1,41 @@
 import React, { useState, useEffect } from "react";
 
-const Item = ({ item, setChanged }) => {
+const Item = ({ item, setChanged, checkedList, setCheckedList }) => {
   const [count, setCount] = useState(0);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setChanged(item);
   }, [count]);
 
+  useEffect(() => {
+    if (checked) {
+      setCheckedList([...checkedList, item]);
+    } else {
+      const _checkedList = [...checkedList];
+      const index = _checkedList.indexOf(item);
+      _checkedList.splice(index, 1);
+      setCheckedList(_checkedList);
+    }
+  }, [checked]);
+
   return (
     <>
       <li>
-        <span>{item}</span>
+        <div>
+          <input
+            type={"checkbox"}
+            checked={checked}
+            onClick={(e) => {
+              setChecked(e.target.checked);
+            }}
+          ></input>
+          <span>{item}</span>
+        </div>
+
         <div>
           <div>{count}</div>
+
           <div className={"button-list"}>
             <button
               onClick={() => {

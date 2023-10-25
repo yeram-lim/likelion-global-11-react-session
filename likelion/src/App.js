@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Item from "./Item";
 
 function App() {
   const [changed, setChanged] = useState(null);
+  const [checkedList, setCheckedList] = useState([]);
 
   return (
     <>
@@ -11,12 +12,23 @@ function App() {
           <h1>방금 변경된 아이템</h1>
           <div>{changed}</div>
         </section>
+        <section className={"changed"}>
+          <h1>체크된 아이템 개수</h1>
+          <div>{checkedList.length}개</div>
+        </section>
         {/* 아이템 리스트 */}
         <section className={"list"}>
           <h1>아이템 리스트</h1>
           <ol>
             {["A", "B", "C", "D", "E", "F", "G", "H"].map((item) => {
-              return <Item item={item} setChanged={setChanged} />;
+              return (
+                <Item
+                  item={item}
+                  setChanged={setChanged}
+                  checkedList={checkedList}
+                  setCheckedList={setCheckedList}
+                />
+              );
             })}
           </ol>
         </section>
