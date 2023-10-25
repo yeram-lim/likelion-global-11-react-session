@@ -14,6 +14,10 @@ function App() {
     setChanged("B");
   }, [countB]);
 
+  useEffect(() => {
+    setChanged("C");
+  }, [countC]);
+
   return (
     <>
       <article>
