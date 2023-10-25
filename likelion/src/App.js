@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
   const [countC, setCountC] = useState(0);
+  const [changed, setChanged] = useState(null);
+
+  useEffect(() => {
+    setChanged("A");
+  }, [countA]);
+
+  useEffect(() => {
+    setChanged("B");
+  }, [countB]);
 
   return (
     <>
       <article>
+        <section className={"changed"}>
+          <h1>방금 변경된 아이템</h1>
+          <div>{changed}</div>
+        </section>
         {/* 아이템 리스트 */}
         <section className={"list"}>
           <h1>아이템 리스트</h1>
@@ -96,6 +109,15 @@ function App() {
 
         article h1 {
           padding: 0 0.5rem;
+        }
+        section.changed {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        section.changed > div {
+          color: purple;
+          font-weight: 800;
         }
         section.list {
           display: flex;
